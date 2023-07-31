@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!-- c:out ; c:forEach etc. -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Formatting (dates) -->
@@ -55,7 +56,7 @@
 					</div>
 				</div>
 				<hr class="w-75 mx-auto">
-				<c:forEach items="${posts }" var="post">
+				<c:forEach items="${posts }" var="post" varStatus="loop">
 					<div class="border p-3 m-3 w-75 bg-white">
 						<div class="row">
 							<p class="col-10">
@@ -68,6 +69,9 @@
 								</form>
 							</div>
 						</div>
+						<p>
+							<fmt:formatDate value="${post.getCreatedAt() }" type = "both" dateStyle = "short" timeStyle = "short"/>
+						</p>
 						<p class="h5 fw-bold">
 							<c:out
 								value="${post.getAuthor().getName().concat(' ').concat(post.getAuthor().getLastName()) }"></c:out>

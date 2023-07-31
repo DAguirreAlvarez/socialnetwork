@@ -9,7 +9,7 @@ import com.diego.redsocial.models.Publicacion;
 
 @Repository
 public interface PublicacionRepository extends CrudRepository<Publicacion, Long>{
-	List<Publicacion> findAll();
+	List<Publicacion> findAllByOrderByIdDesc();
 	
 	List<Publicacion> findByAuthorId(Long id);
 }

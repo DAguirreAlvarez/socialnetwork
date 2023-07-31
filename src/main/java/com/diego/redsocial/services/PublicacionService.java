@@ -1,6 +1,11 @@
 package com.diego.redsocial.services;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +25,7 @@ public class PublicacionService {
 	
 	
 	public List<Publicacion> listarPublicaciones(){
-		return puRepo.findAll();
+		return puRepo.findAllByOrderByIdDesc();
 	}
 	
 	public boolean borrarPublicacion(Long id) {
@@ -40,4 +45,8 @@ public class PublicacionService {
 	public Publicacion postById(Long id) {
 		return puRepo.findById(id).orElse(null);
 	}
+	
+	
+	
+	
 }

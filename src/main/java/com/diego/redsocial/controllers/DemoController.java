@@ -39,7 +39,8 @@ public class DemoController {
 	
 	
 	@GetMapping("/")
-	public String index(Model modelo){
+	public String index(Model modelo, HttpSession sesion){
+		sesion.setAttribute("id", null);
 		modelo.addAttribute("user", new User());
 		modelo.addAttribute("loginUser", new LoginUser());
 		return "index.jsp";
@@ -92,6 +93,7 @@ public class DemoController {
 		if(sesion.getAttribute("id")== null) {
 			return "redirect:/";
 		}
+		
 		modelo.addAttribute("user", userServ.findById((Long) sesion.getAttribute("id")));
 		modelo.addAttribute("posts", puServ.listarPublicaciones());
 		//modelo.addAttribute("posts", puServ.postUser((Long) sesion.getAttribute("id")));
@@ -103,12 +105,14 @@ public class DemoController {
 	@PostMapping("/post/new")
 	public String savePost(@Valid @ModelAttribute("post")Publicacion publicacion, BindingResult result, HttpSession
 			sesion, Model modelo) {
+		if(sesion.getAttribute("id")==null) {
+			return "redirect:/";
+		}
 		if(result.hasErrors()) {
 			modelo.addAttribute("user", userServ.findById((Long) sesion.getAttribute("id")));
 			modelo.addAttribute("posts", puServ.listarPublicaciones());
+			modelo.addAttribute("claseError", "mb-2 bg-danger border rounded d-inline-block p-2");
 			return "home.jsp";
-		}else if(sesion.getAttribute("id")==null) {
-			return "redirect:/";
 		}
 		publicacion.setAuthor(userServ.findById((Long) sesion.getAttribute("id")));
 		puServ.crearPost(publicacion);
@@ -121,6 +125,9 @@ public class DemoController {
 	public String deletePost(@PathVariable("id")Long id, HttpSession sesion) {
 		if(sesion.getAttribute("id")== null) {
 			return "redirect:/";
+		}
+		if(sesion.getAttribute("id")!=puServ.postById(id)) {
+			return "redirect:/home";
 		}
 		puServ.borrarPublicacion(id);
 		return "redirect:/home";
@@ -140,13 +147,21 @@ public class DemoController {
 	}
 	
 	@PostMapping("/post/{id}")
-	public String postComment(@PathVariable("id")Long id, Model modelo,@ModelAttribute("comentario")Comentario com ,BindingResult result, HttpSession sesion) {
+	public String postComment(@PathVariable("id")Long id, Model modelo,@Valid @ModelAttribute("comentario")Comentario com ,BindingResult result, HttpSession sesion) {
 		if(result.hasErrors()) {
+			modelo.addAttribute("user", userServ.findById((Long) sesion.getAttribute("id")));
 			modelo.addAttribute("post", puServ.postById(id));
 			modelo.addAttribute("comentarios", coServ.comentariosPubli(id));
+			modelo.addAttribute("claseError", "mb-2 bg-danger border rounded d-inline-block p-2");
 			return "post.jsp";
 		}
+		if(sesion.getAttribute("id")== null) {
+			return "redirect:/";
+		}
 		
+		
+		com.setPost(puServ.postById(id));
+		com.setAuthor(userServ.findById((Long) sesion.getAttribute("id")));
 		coServ.comentar(com);
 		
 		return "redirect:/post/"+id;

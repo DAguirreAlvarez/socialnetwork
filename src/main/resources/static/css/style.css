@@ -1,0 +1,73 @@
+@charset "ISO-8859-1";
+
+
+
+.contenedor{
+	min-height: 614px;
+	background-color:#ADD8E6;
+	margin-bottom:-5px;
+}
+
+header{
+	background-color: #00008B;
+}
+
+.post{
+	width:90%;
+}
+
+body{
+	background-color:#7ABBCF;
+	font-family: monospace;
+}
+
+
+.textocomentario{
+	resize: none;
+}
+
+.divisor{
+	width:95%;
+}
+
+.links{
+	color:white;
+	transition: 0.2s;
+}
+
+.links:hover{
+	color: #7DB46CFF;
+	
+}
+
+header h2{
+	margin-left:20px;
+}
+
+#eliminar{
+	width:15px;
+	height:20px;
+}
+
+.formularios{
+	margin-left:2px;
+}
+
+.comentario{
+	background-color: #E7EBE0FF;
+	padding:10px;
+}
+
+.info-persona{
+	background-color: #00008B;
+	color: white;
+	display: inline-block;
+	padding: 5px 3px 5px 3px;
+}
+
+
+
+
+
+
+

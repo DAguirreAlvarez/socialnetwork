@@ -13,7 +13,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/style.css" type="text/css">
 <!-- change to match your file/naming structure -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/app.js"></script>
@@ -22,22 +22,15 @@
 </head>
 <body>
 	<div class="container">
-		<header class="row bg-info text-white pt-2">
+		<header class="text-white py-1 row rounded-bottom sticky-top">
 			<div class="col-8">
-				<h1 class="fw-bold">Red Social</h1>
+				<h1 style="margin-left: 15px;" class="col-9 fw-bold">Red Social</h1>
 			</div>
 			<div class="col-4 ">
-				<ul class="list-unstyled d-flex justify-content-around mt-2 h5">
-					<li>
-						<a href="#" class="text-muted text-decoration-none ">
-							Register / Login
-						</a>
-					</li>
-					<li><a href="#" class="text-decoration-none text-dark"> Home </a></li>
-				</ul>
+				
 			</div>
 		</header>
-		<div class="row mt-3">
+		<div class="py-4 container mx-auto contenedor row">
 			<div class="col-5">
 				<h2>Register!</h2>
 				<div>
@@ -96,6 +89,10 @@
 				
 			</div>
 		</div>
+		<footer
+			class="text-center py-2 bg-secondary bg-gradient text-white rounded-top container">
+			<div>© 2023 - Diego Aguirre</div>
+		</footer>
 	</div>
 </body>
 </html>

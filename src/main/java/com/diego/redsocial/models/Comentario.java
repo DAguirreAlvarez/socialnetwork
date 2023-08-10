@@ -16,16 +16,17 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name="Users")
+@Table(name="comments")
 public class Comentario {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message="Ingresa contenido a la publicacion.")
+	@NotBlank(message="Ingresa contenido al comentario.")
 	@Column(length=65535, columnDefinition="text")
 	private String contenido;
 	

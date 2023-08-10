@@ -19,6 +19,12 @@ public class ComentarioService {
 	}
 	
 	public void comentar(Comentario com) {
-		comRepo.save(com);
+		Comentario comment = new Comentario();
+		
+		comment.setAuthor(com.getAuthor());
+		comment.setContenido(com.getContenido());
+		comment.setPost(com.getPost());
+		
+		comRepo.save(comment);
 	}
 }

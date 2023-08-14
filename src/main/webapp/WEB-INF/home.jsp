@@ -25,15 +25,15 @@
 	<div class="container">
 		<header class="text-white py-1 row rounded-bottom sticky-top ">
 			<h2 style="margin-left: 15px;" class="col-9 fw-bold">
-				Welcome <a href="#" class="text-decoration-none text-white"><c:out
+				Welcome <a href="/profile/${user.getId() }" class="text-decoration-none text-white"><c:out
 						value="${user.getName().concat(' ').concat(user.getLastName())}"></c:out></a>
 			</h2>
 			<div class="col-2">
 				<ul class="list-unstyled row mt-2 h5 fw-bold">
 					<li class="col-5"><a href="/home"
-						class="text-decoration-none text-muted "> Home </a></li>
+						class="text-decoration-none text-muted"> Home </a></li>
 					<li class="col-6"><a href="/logout"
-						class="links text-decoration-none "> Logout </a></li>
+						class="links text-decoration-none"> Logout </a></li>
 				</ul>
 			</div>
 		</header>
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 		<footer
-			class="text-center py-2 bg-secondary bg-gradient text-white rounded-top mx-auto container">
+			class="text-center py-2 bg-secondary bg-gradient text-white rounded-top mx-auto">
 			<div>© 2023 - Diego Aguirre</div>
 		</footer>
 	</div>

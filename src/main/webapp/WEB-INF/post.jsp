@@ -23,8 +23,8 @@
 <body>
 	<div class="container">
 		<header class="text-white py-1 row rounded-bottom sticky-top ">
-			<h2 class="col-9 fw-bold">
-				Welcome <a href="#" class="text-decoration-none text-white"><c:out
+			<h2 style="margin-left: 15px;" class="col-9 fw-bold">
+				Welcome <a href="/profile/${user.getId() }" class="text-decoration-none text-white"><c:out
 						value="${user.getName().concat(' ').concat(user.getLastName())}"></c:out></a>
 			</h2>
 			<div class="col-2">

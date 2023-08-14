@@ -167,6 +167,13 @@ public class DemoController {
 		return "redirect:/post/"+id;
 	}
 	
+	@GetMapping("/profile/{id}")
+	public String perfil(@PathVariable("id")Long id ,Model modelo, HttpSession sesion) {
+		modelo.addAttribute("publicaciones", puServ.postUser(id));
+		modelo.addAttribute("user", userServ.findById((Long) id));
+		return "profile.jsp";
+		
+	}
 	
 	
 	
